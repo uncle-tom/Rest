@@ -1,0 +1,76 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require material_icons
+ *= require light-gallery
+ */
+
+ @import "materialize";
+ @import "https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css";
+
+$bold-color: rgba(0,0,0,.74);
+$grey-color: rgb(70, 69, 69);
+
+hr {
+	border-top: 0.5px solid #DBDBDB;
+	border-bottom: 0.5px solid #DBDBDB;
+	border-color: #DBDBDB;
+}
+
+.center-align-page {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index: 9;
+	background-color: white;
+}
+
+.normal {
+	font-weight: normal;
+	color: $bold-color;
+}
+
+.bold {
+	font-weight: bold;
+	color: $bold-color;
+}
+
+.uppercase {
+	text-transform: uppercase;
+}
+
+.width100 {
+	width: 100%;
+}
+
+.choose-button {
+	margin: 15px 0px;
+}
+
+.nav-wrapper a {
+	color: $grey-color;
+}
+
+ul.dropdown-content.select-dropdown li span {
+  color: #000; /* no need for !important :) */
+}
+
+.main-page-cities-list-img img {
+	width: 100%;
+}

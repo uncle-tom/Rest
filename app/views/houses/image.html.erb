@@ -1,0 +1,21 @@
+<h5>Добавить фото</h5>
+<%= form_for([@house, Photo.new]) do |form| %>
+
+  <%= form.file_field :img, multiple: true, :required => true  %>
+  <%= form.hidden_field :user_id, value: current_user.id %>
+  <%= form.hidden_field :house_id, value: @house.id %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<% @house.photos.each do |i| %>
+	<%= image_tag i.img.thumb.url %>
+	<%= javascript_tag do %>
+    window.house_id = '<%= house_path(@house) %>';
+    window.this_photo_id = '<%= i.id %>';
+    window.house_url = '<%= @house.id %>';
+  <% end %>
+	<div class="choose_cover_photo" data-id="<%= i.id %>"> Обложка</div>
+<% end %>

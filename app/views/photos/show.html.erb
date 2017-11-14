@@ -1,0 +1,8 @@
+<p id="notice"><%= notice %></p>
+
+<% @photo.img.each do |i| %>
+	<%= image_tag i %>
+<% end %>
+
+<%= link_to 'Edit', edit_photo_path(@photo) %> |
+<%= link_to 'Back', photos_path %>

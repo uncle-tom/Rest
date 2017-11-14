@@ -1,0 +1,23 @@
+// Place all the styles related to the Cities controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.citypage-house-image img {
+	width: 100%;
+	height: 222px;
+	object-fit: cover;
+}
+
+
+.citypage-nav {
+	width: 100%;
+	float: left;
+	margin-bottom: 25px;
+}
+
+.citypage-nav li {
+	float: left;
+	list-style-type: none;
+	padding-right: 25px;
+}

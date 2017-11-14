@@ -1,0 +1,33 @@
+<%= form_with(model: house, local: true, :remote => true) do |form| %>
+  <% if house.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(house.errors.count, "error") %> prohibited this house from being saved:</h2>
+
+      <ul>
+      <% house.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.label 'Название' %><br />
+  <%= form.text_field :name %>
+
+  <%= form.hidden_field :user_id, value: current_user.id %>
+
+  <div class="card-content">
+    <div class="card-title">
+      Город
+    </div>
+    <div class="field">
+      <%= form.select :city_id, 'Город': City.all.collect {|p| [ p.name, p.id] } %>
+    </div>
+  </div>
+
+  <%= form.file_field :image, multiple: true, class: 'report_file' %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

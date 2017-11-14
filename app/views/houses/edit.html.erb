@@ -1,0 +1,8 @@
+<h1>Editing House</h1>
+
+<%= link_to 'Фотографии', image_house_path(@house) %>
+
+<%= render 'form', house: @house %>
+
+<%= link_to 'Show', @house %> |
+<%= link_to 'Back', houses_path %>

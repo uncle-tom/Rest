@@ -1,0 +1,21 @@
+<div class="row">
+	<div class="col m12 s12">
+		<h1><%= @city.name %></h1>
+		<div class="citypage-nav">
+			<li><%= link_to 'Жилье', city_path(@city) %></li>
+			<li><%= link_to 'Куда пойти?', place_city_path(@city) %></li>	
+		</div>
+	</div>
+</div>
+<div class="row">
+	<% @city.places.each do |place| %>
+		<div class="col s12 m4">
+			<div class="citypage-house-image">
+						
+			</div>
+			<div class="citypage-house-name">
+				<%= link_to place.name, place_path(place) %>	
+			</div>
+		</div>
+	<% end %>
+</div>

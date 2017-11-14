@@ -1,0 +1,35 @@
+<div class="house-cover-img" style="background-image: url('<%= @house.cover_photo.try(:img).try(:url) %>')">
+</div>
+
+<div class="container">
+	<div class="row house-page">
+		<div class="col m12 s12">
+		  <div class="house-page-intro">
+			  <div class="field">
+			    <h4><%= @house.name %></h4>
+			  </div>
+			  <div class="field">
+			    <%= @house.city_own.name %>
+			  </div>
+			  <div class="field">
+			    Владелец: <%= @house.try(:user_own).try(:email) %>
+			  </div>	
+		  </div>
+		  <div class="house-page-img-list">
+		  	<div class="field">
+			    Фотографии
+			  </div>
+			  <ul id="lightGallery">
+		      <% @house.photos.each do |i| %>
+		        <li class="col m4 s12 photo_card" data-src="<%= i.img.url %>">
+		          <img src="<%= i.img.large.url %>" />
+		        </li>
+		      <% end %>
+		    </ul>	
+		  </div>
+		</div>
+	</div>
+
+<%= link_to 'Edit', edit_house_path(@house) %> |
+<%= link_to 'Back', houses_path %>
+</div>

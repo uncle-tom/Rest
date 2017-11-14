@@ -1,0 +1,82 @@
+<%= form_with(model: place, local: true) do |form| %>
+  <% if place.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(place.errors.count, "error") %> prohibited this place from being saved:</h2>
+
+      <ul>
+      <% place.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="card-content">
+    <div class="card-title">
+      Название
+    </div>
+    <div class="field">
+      <%= form.text_field :name %>
+    </div>
+  </div>
+
+  <div class="card-content">
+    <div class="card-title">
+      Описание
+    </div>
+    <div class="field">
+      <%= form.text_field :description %>
+    </div>
+  </div>
+
+  <div class="card-content">
+    <div class="card-title">
+      Город
+    </div>
+    <div class="field">
+      <%= form.select :city_id, 'Город': City.all.collect {|p| [ p.name, p.id] } %>
+    </div>
+  </div>
+
+  <div class="card-content">
+    <div class="card-title">
+      Адрес
+    </div>
+    <div class="field">
+      <%= form.text_field :street %>
+    </div>
+  </div>
+
+  <div class="card-content">
+    <div class="card-title">
+      Телефон
+    </div>
+    <div class="field">
+      <%= form.text_field :phone %>
+    </div>
+  </div>
+
+  <div class="card-content">
+    <div class="card-title">
+      Время работы
+    </div>
+    <div class="field">
+      <%= form.text_field :time_work %>
+    </div>
+  </div>
+
+  <div class="card-content">
+    <div class="card-title">
+      Сайт
+    </div>
+    <div class="field">
+      <%= form.text_field :site %>
+    </div>
+  </div>
+
+  <%= form.hidden_field :cityname, value: @place.city.name %>
+
+  <div class="actions">
+    <%= form.submit 'Отправить', class: 'btn' %>
+  </div>
+<% end %>

@@ -1,0 +1,77 @@
+<div class="container main-page">
+	<h1 class="uppercase bold">Отдыхайте в Украине</h1>
+	<p class="grey-text text-darken-2">Мы подскажем, где жить, есть и развлекаться</p>
+	<!-- Список домов Карпаты Начало -->
+	<% @first_cat.each do |first_c| %>
+		<h2 class="uppercase normal"><%= first_c.name %></h2>
+	<% end %>
+	<div class="row">
+		<div class="swiper-container slider">
+	    <div class="swiper-wrapper">
+	      <% @first_cat.each do |first_c| %>
+	      	<% first_c.cities.each do |city| %>
+	      		<% city.houses.each do |h| %>
+		        <div class="swiper-slide">
+		          <div class="col s12 m12">
+		          	<div class="slider-image">
+		          		<%= image_tag h.cover_photo.try(:img).try(:url) unless h.cover_photo.blank? %>
+		          	</div>
+								<div class="slider-title">
+									<%= link_to h.name, house_path(h) %>	
+								</div>
+	              <div class="slider-city">
+	              	<%= h.city_own.name %>	
+	              </div>
+		          </div>
+		        </div>
+		        <% end %>
+	        <% end %>
+	      <% end %>
+	    </div>
+	    <!-- If we need navigation buttons -->
+	    <div class="swiper-button-prev"></div>
+	    <div class="swiper-button-next"></div>
+	  </div>
+	</div>
+	<!-- Список домов Карпаты Конец -->
+			<% @first_cat.each do |first_c| %>
+			  <% first_c.cities.each do |city| %>
+			  	<h4><%= link_to city.name, city_path(city) %></h4>
+			    <p> 
+			    	<% city.houses.each do |h| %>
+			      	<%= h.name %>
+			      <% end %>
+			    </p>
+			  <% end %>
+			<% end %>
+
+			<% @first_place.each do |first_p| %>
+				<h3>Где есть, пить и развлекаться в г. <%= first_p.name %></h3>
+				<% first_p.places.each do |p| %>
+					<%= p.name %>
+				<% end %>
+			<% end %>
+
+			<div class="main-page-cities-list">
+				<h3>Города</h3>
+				<div class="row">
+					<% @cities.each do |city| %>
+						<div class="col m2 s12">
+							<div class="main-page-cities-list-img">
+								<%= image_tag city.cover %>
+							</div>
+							<div class="main-page-cities-list-name">
+								<p><%= city.name %></p>
+							</div>
+						</div> 
+					<% end %>
+				</div>
+			</div>
+
+			
+
+			<%= link_to 'New House', new_house_path %>
+			<%= link_to 'New Place', new_place_path %>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,31 @@
+<%= form_with(model: city, local: true) do |form| %>
+  <% if city.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(city.errors.count, "error") %> prohibited this city from being saved:</h2>
+
+      <ul>
+      <% city.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.label 'Город' %><br />
+  <%= form.text_field :name %>
+
+  <%= form.file_field :cover, :required => true  %>
+
+  <div class="card-content">
+    <div class="card-title">
+      Ваша категория
+    </div>
+    <div class="field">
+      <%= form.select :category_id, 'Категория': Category.all.collect {|p| [ p.name, p.id] } %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
